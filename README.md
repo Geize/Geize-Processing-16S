@@ -1,10 +1,7 @@
-## **16S rRNA analysis pipeline**
+# **16S rRNA analysis pipeline**
 
-------------------------------------------------------------------------
 
-## 
-
-## <br/>
+<br/>
 
 The propose of this page is the reproducibility of the 16S data described in my publications (e.g.,<a href=" https://journals.asm.org/doi/abs/10.1128/AEM.00199-20">Tomazetto et al.</a>) or those are coming up soon. If you are looking for a tutorial, <a href="<https://docs.qiime2.org/2022.2/tutorials/moving-pictures/"> here</a> is the best one you can have.
 
