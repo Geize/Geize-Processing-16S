@@ -1,13 +1,4 @@
----
-title: "Qiime2 - processing 16S data"
-#author: "Geizecler Tomazetto, Ph.D."
-#date: '2022-09-16'
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+### **16S rRNA analysis pipeline**
 
 <br/>
 
@@ -78,7 +69,7 @@ Check out the output files and directories!
 
 Open the file `qiime2_OhNO.err`. Try to find a message indicating error. Hope, you won't find anything. 😅
 
-The `qiime tools validate` command was added after some critical steps. Open the `qiime2_GreatJOb.out` file, and check if there are similar message `"Result importing.qza appears to be valid at level=max."` after each step. 
+The `qiime tools validate` command was added after some critical steps. Open the `qiime2_GreatJOb.out` file, and check if there are similar message `"Result importing.qza appears to be valid at level=max."` after each step.
 
 <br/>
 
