@@ -1,6 +1,5 @@
 # **16S rRNA analysis pipeline**
 
-
 <br/>
 
 The propose of this page is the reproducibility of the 16S data described in my publications (e.g.,<a href=" https://journals.asm.org/doi/abs/10.1128/AEM.00199-20">Tomazetto et al.</a>) or those are coming up soon. If you are looking for a tutorial, <a href="<https://docs.qiime2.org/2022.2/tutorials/moving-pictures/"> here</a> is the best one you can have.
@@ -13,7 +12,7 @@ However, you are more than welcome to reach out to me if you need help. Do not w
 -   Run the activate step.
 -   Test if qiime2 successfully activated 🔥- very important step.
 
-``` console
+```
 qiime --help
 ```
 
@@ -26,7 +25,7 @@ qiime --help
 
 **2. Transfer the fastq.gz files from your computer/HDD to the server.**
 
-``` console
+```
 (base) ➜ ~  scp data/*.fastq.gz  mylogin@login:/home/geize/16S/
 ```
 
@@ -40,7 +39,7 @@ I usually create metadata files according to the project and what is need to com
 
 🔥**Important note.**<br> Do not forget to save the file as tab-delimited - it's the best option. Validate your metadata using a Keemei.
 
-``` console
+```
 #SampleID   Description   Condition   ...
 Sample01    Soil    Ref      ...
 Sample02    Cons    A        ...
@@ -52,7 +51,7 @@ and dadada...
 
 The following python script can help you to create a manifest file from any directory. Just type the command bellow to get more instructions - very fancy. 😁
 
-``` console
+```
 (base) ➜ ~  python Write_manifestFile.py -help
 ```
 

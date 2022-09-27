@@ -365,15 +365,9 @@ pre code {
 </div>
 
 
-<div id="s-rrna-analysis-pipeline" class="section level2">
-<h2><strong>16S rRNA analysis pipeline</strong></h2>
-<hr />
-</div>
-<div id="section" class="section level2">
-<h2></h2>
-</div>
-<div id="section-1" class="section level2">
-<h2><br /></h2>
+<div id="s-rrna-analysis-pipeline" class="section level1">
+<h1><strong>16S rRNA analysis pipeline</strong></h1>
+<p><br /></p>
 <p>The propose of this page is the reproducibility of the 16S data
 described in my publications
 (e.g.,<a href=" https://journals.asm.org/doi/abs/10.1128/AEM.00199-20">Tomazetto
@@ -392,7 +386,7 @@ qiime2</a>.</li>
 <li>Run the activate step.</li>
 <li>Test if qiime2 successfully activated 🔥- very important step.</li>
 </ul>
-<pre class="console"><code>qiime --help</code></pre>
+<pre><code>qiime --help</code></pre>
 <p><br /></p>
 <ul>
 <li>Before you exit the server, create a working directory.</li>
@@ -401,7 +395,7 @@ qiime2</a>.</li>
 <p><br /></p>
 <p><strong>2. Transfer the fastq.gz files from your computer/HDD to the
 server.</strong></p>
-<pre class="console"><code>(base) ➜ ~  scp data/*.fastq.gz  mylogin@login:/home/geize/16S/</code></pre>
+<pre><code>(base) ➜ ~  scp data/*.fastq.gz  mylogin@login:/home/geize/16S/</code></pre>
 <p><br /></p>
 <p><strong>3. Create the sample-metadata file.</strong></p>
 <p>I usually create metadata files according to the project and what is
@@ -411,7 +405,7 @@ You can also add other information as much as you wish.</p>
 <p>🔥<strong>Important note.</strong><br> Do not forget to save the file
 as tab-delimited - it’s the best option. Validate your metadata using a
 Keemei.</p>
-<pre class="console"><code>#SampleID   Description   Condition   ...
+<pre><code>#SampleID   Description   Condition   ...
 Sample01    Soil    Ref      ...
 Sample02    Cons    A        ...
 Sample03    Cons    B        ...
@@ -421,7 +415,7 @@ file.</strong></p>
 <p>The following python script can help you to create a manifest file
 from any directory. Just type the command bellow to get more
 instructions - very fancy. 😁</p>
-<pre class="console"><code>(base) ➜ ~  python Write_manifestFile.py -help</code></pre>
+<pre><code>(base) ➜ ~  python Write_manifestFile.py -help</code></pre>
 <p><br /> <strong>5. Processing the data.</strong></p>
 <p>Once you have the manifest file, <code>DrT_Qiime2.sh</code>, and of
 course, fastq.gz in a directory, you can run the script. All the steps
