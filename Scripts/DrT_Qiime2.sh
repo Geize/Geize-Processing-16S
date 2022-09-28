@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH --account killer_slug
-#SBATCH --job-name="testing"
+#SBATCH --account dadada...
+#SBATCH --job-name="dadada..""
 #SBATCH --partition normal
 #SBATCH -c 2 # number of cores requested
 #SBATCH --mem-per-cpu=4G
