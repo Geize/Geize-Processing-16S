@@ -67,7 +67,7 @@ The `qiime tools validate` command was added after some critical steps. Open the
 
 <br/>
 
-**6. Plotting some graphics.**
+**6. Plotting graphs.**
 
 Here, you also find a R script to plot some graphics. You can plot different graphics emphasizing "little this or little that". It is up to you.
 
