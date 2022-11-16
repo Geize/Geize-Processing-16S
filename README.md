@@ -63,7 +63,7 @@ Check out the output files and directories!
 
 Open the file `qiime2_OhNO.err`. Try to find a message indicating error. Hope, you won't find anything. 😅
 
-The `qiime tools validate` command was added after some critical steps. Open the `qiime2_GreatJOb.out` file, and check if there are similar message to this `"Result importing.qza appears to be valid at level=max."` after each step. If so, great job.
+The `qiime tools validate` command was added after some critical steps. Open the `qiime2_GreatJOb.out` file, and check if there are similar message to this `"Result importing.qza appears to be valid at level=max."` after each step. If so, great job!
 
 <br/>
 
