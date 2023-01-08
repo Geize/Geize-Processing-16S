@@ -1,12 +1,10 @@
 #!/bin/bash
-#SBATCH --account dadada...
-#SBATCH --job-name="dadada..""
+#SBATCH --account killer_slug
+#SBATCH --job-name="16SPl"
 #SBATCH --partition normal
-#SBATCH -c 2 # number of cores requested
+#SBATCH -c 4 # number of cores requested
 #SBATCH --mem-per-cpu=4G
-#SBATCH --time=00:10:00 # hours:minutes runlimit after which job will be killed
-#SBATCH --mail-user=geizetomazetto@bce.au.dk
-#SBATCH --mail-type=END,FAIL
+#SBATCH --time=03:00:00 # hours:minutes runlimit after which job will be killed
 #SBATCH -e qiime2_OhNO.err-%N
 #SBATCH -o qiime2_GreatJOb.out-%N
 
@@ -25,7 +23,7 @@ qiime --help
 #Importe the sequence files into a QIIME2 artifact.
 
 qiime tools import --type SampleData[PairedEndSequencesWithQuality] \
-                  --input-path manifest.txt \
+                  --input-path manifest_file.txt \
                   --output-path importing.qza \
                   --input-format PairedEndFastqManifestPhred33
 
@@ -89,14 +87,14 @@ qiime feature-table tabulate-seqs --i-data rep-seqs-dada2.qza \
 qiime phylogeny align-to-tree-mafft-fasttree --i-sequences rep-seqs-dada2.qza \
                                               --o-alignment aligned-rep-seqs.qza \
                                               --o-masked-alignment masked-aligned-rep-seqs.qza \
-                                              --o-tree unrooted-tree.qza --o-rooted-tree root-tree.qza
+                                              --o-tree unrooted-tree.qza --o-rooted-tree rooted-tree.qza
 
 
 
 #Let's validate these output files.
 qiime tools validate aligned-rep-seqs.qza
 qiime tools validate masked-aligned-rep-seqs.qza
-qiime tools validate root-tree.qza
+qiime tools validate rooted-tree.qza
 
 #PAY ATTENTION.
 #Check out first if all samples in **TABLE** have at least XXX sequences.
@@ -114,8 +112,8 @@ qiime diversity alpha-group-significance --i-alpha-diversity core-metrics-result
 
 
 # Rarefaction curve is no longer use and useful. However, here you are.
-qiime diversity alpha-rarefaction --i-tabe table-dada2.qza \
-                                  --i-phylogeny root-tree.qza \
+qiime diversity alpha-rarefaction --i-table table-dada2.qza \
+                                  --i-phylogeny rooted-tree.qza \
                                   --p-max-depth 1000 \
                                   --m-metadata-file sample-metadata.txt \
                                   --o-visualization alpha_rarefaction.qzv
@@ -140,7 +138,7 @@ qiime tools export --input-path chao1.qza --output-path export_chao1
         # And the file was rename for gg_515_806_classifier.qza
 
 
-qiime feature-classifier classify-sklearn --i-classifier gg_515_806_classifier.qza \
+qiime feature-classifier classify-sklearn --i-classifier gg-13-8-99-515-806-nb-classifier.qza \
                                           --i-reads rep-seqs-dada2.qza \
                                           --o-classification taxonomy.qza
 
