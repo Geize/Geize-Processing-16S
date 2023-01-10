@@ -2,7 +2,7 @@
 #SBATCH --account killer_slug
 #SBATCH --job-name="16SPl"
 #SBATCH --partition normal
-#SBATCH -c 4 # number of cores requested
+#SBATCH -c 12 # number of cores requested
 #SBATCH --mem-per-cpu=4G
 #SBATCH --time=03:00:00 # hours:minutes runlimit after which job will be killed
 #SBATCH -e qiime2_OhNO.err-%N
@@ -105,7 +105,7 @@ qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree.qza \
                                            --m-metadata-file sample-metadata.txt \
                                            --output-dir core-metrics-results
 
-qiime diversity alpha-group-significance --i-alpha-diversity core-metrics-results/faith_pd-vector.qza \
+qiime diversity alpha-group-significance --i-alpha-diversity core-metrics-results/faith_pd_vector.qza \
                                          --m-metadata-file sample-metadata.txt \
                                          --o-visualization core-metrics-results/faith-pd-group-significance.qzv
 
