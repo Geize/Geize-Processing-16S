@@ -13,7 +13,7 @@ v3v4Region: ~/BactTaxa/greenGenes/v3v4_gg2_taxonomy.qza
 
 
 # Output directories.
-log_files: ~//BactTaxa/log/
+log_files: ~/BactTaxa/log/
 q2_qzv: ~/BactTaxa/q2_qzv/
 core_metrics: ~/BactTaxa/core-metrics/
 validate: ~/BactTaxa/Validation/
