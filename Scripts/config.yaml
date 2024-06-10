@@ -1,0 +1,41 @@
+
+# Input directories.
+project_directory: ~/BactTaxa/
+input_dir: ~/BactTaxa/Raw_data/
+
+# Input File.
+manifest_file: ~/BactTaxa/manifest-file.txt
+metadata: ~/BactTaxa/sample-metadata.txt
+
+
+## GreenGenes2: V3-V4 extracted and trained. 
+v3v4Region: ~/BactTaxa/greenGenes/v3v4_gg2_taxonomy.qza
+
+
+# Output directories.
+log_files: ~//BactTaxa/log/
+q2_qzv: ~/BactTaxa/q2_qzv/
+core_metrics: ~/BactTaxa/core-metrics/
+validate: ~/BactTaxa/Validation/
+
+
+#Threads
+trimming_threads: 24
+dada2_threads: 24
+alpha_threads: 24 # If you have a lot files/sequence, increase it. 
+
+# DADA2 - denoising 
+# Considering V3-V4 region (~ 460bp with primers).
+# Primers employed 341F:CCTACGGGNGGCWGCAG and 805R:GACTACHVGGGTATCTAATCC.
+# Set for ~ 26bp overlap.  # It is ok!
+
+trim-left-f: 1 
+trim-left-r: 1 
+trunc-len-f: 260 
+trunc-len-r: 230
+
+# diversity
+core_sampling_depth: 10000
+
+
+

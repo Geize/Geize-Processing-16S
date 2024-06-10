@@ -1,0 +1,79 @@
+''''
+@uthor - Geizecler Tomazetto, Ph.D.
+Senior Research Scientist- University of Pittsburgh.
+'''
+
+# 16S amplicon V3-V4 region amplified.
+# Illumina platform:2 x 300 bp  (Paired-end reads!). 
+# Minimum threads 32.
+
+
+import configparser
+import yaml
+
+configfile: "config.yaml"
+
+# Variables  
+Main_Dir = config["project_directory"]
+Q2_qzv= config["q2_qzv"]
+Out_metrics = config["core_metrics"]
+Validation = config["validate"]
+
+# Scripts
+include: "~/rules/diversity.smk"
+include: "~/dada2Taxa.smk"
+include: "~/validation.smk"
+
+
+
+rule all:
+	input:
+		 Import_reads = "import.qza",
+		 Reads_trimmed = "Import_Trimmed.qza", 
+		 # Number, quality, and length of the reads.
+		 Summarize = Q2_qzv + "SummaryImport.qzv", 
+		 # After the primers trimmed.
+		 Summarize_Trimmed =  Q2_qzv + "Summary_TrimmedReads.qzv", 
+	     # Table Dada2 - Amplicon sequence variant
+		 TableDada2 = "table-dada2.qza", 
+		 RepSeq= "rep-seqs-dada2.qza",
+		 Denoising = "denoising-stats-dada2.qza",  
+		 Denoising_statistics = Q2_qzv + "denoising-stats-dada2.qzv",
+		 Table_vizualization =  Q2_qzv +"table.qzv", # Number of ASVs
+		 # Taxonomic classification
+		 Taxa = "taxonomy.qza",
+		 Taxa_visualization = Q2_qzv + "taxa_Barplot.qzv", 
+		 # Phylogenetic
+		 align= "aligned-rep-seqs.qza", 
+		 mask_align= "masked-aligned-rep-seqs.qza",
+		 unrooted= "unrooted-tree.qza",
+		 rooted = "rooted-tree.qza",
+		 # Core metrics - Alpha diversity
+		 rarefaction = Out_metrics + "rarefied_table.qza",
+		 faith= Out_metrics + "faith_pd_vector.qza", 
+		 observed = Out_metrics + "observed_features_vector.qza",
+		 shannon = Out_metrics + "shannon_vector.qza",
+		 evenness = Out_metrics + "evenness_vector.qza", 
+		 # Alpha visualization 
+		 faith_qzv = Out_metrics + "faith-pd-group-significance.qzv",
+		 # Core metrics - Beta diversity
+		 unweighted = Out_metrics + "unweighted_unifrac_distance_matrix.qza",
+		 weighted = Out_metrics + "weighted_unifrac_distance_matrix.qza",
+		 jaccard = Out_metrics + "jaccard_distance_matrix.qza", 
+		 bray = Out_metrics + "bray_curtis_distance_matrix.qza", 
+		 #Core metrics - Beta diversity - PCoA
+		 pcoa_unweighted= Out_metrics + "unweighted_unifrac_pcoa_results.qza",
+		 pcoa_weighted = Out_metrics + "weighted_unifrac_pcoa_results.qza",
+		 pcoa_jaccard= Out_metrics + "jaccard_pcoa_results.qza",
+		 pcoa_bray= Out_metrics + "bray_curtis_pcoa_results.qza",
+		 # Core metrics - Beta diversity - visualization 
+		 unweighted_qzv = Out_metrics + "unweighted_unifrac_emperor.qzv",
+		 weighted_qzv = Out_metrics + "weighted_unifrac_emperor.qzv",
+		 jaccard_qzv = Out_metrics + "jaccard_emperor.qzv", 
+		 bray_qzv = Out_metrics + "bray_curtis_emperor.qzv",
+		 # Validation
+		 Importing_validation = Validation + "importing_validation.txt", 
+		 ASV_validation = Validation + "dada2_validation.txt",
+		 Taxa_validation = Validation + "taxa_validation.txt",
+		 Aligned_Validation = Validation + "aligned_validation.txt",
+		 Rooted_validation = Validation + "rooted_validation.txt"
